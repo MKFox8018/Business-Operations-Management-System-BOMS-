@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>BOMS - อุปกรณ์</title>
+
+    <link
+        rel="stylesheet"
+        href="stock.css">
+
+</head>
+
+<body>
+
+    <!-- ============================== -->
+    <!-- Header -->
+    <!-- ============================== -->
+
+    <header class="topbar">
+
+        <div>
+
+            <h1>BOMS</h1>
+
+            <p>
+                จัดการอุปกรณ์
+            </p>
+
+        </div>
+
+
+        <div class="user-area">
+
+            <span id="userRole">
+                กำลังโหลด...
+            </span>
+
+            <button id="backButton">
+                กลับหน้าหลัก
+            </button>
+
+            <button id="logoutButton">
+                ออกจากระบบ
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ============================== -->
+    <!-- Main -->
+    <!-- ============================== -->
+
+    <main class="container">
+
+        <div class="page-header">
+
+            <div>
+
+                <h2>
+                    รายการอุปกรณ์
+                </h2>
+
+                <p>
+                    จัดการอุปกรณ์ของลูกค้า
+                </p>
+
+            </div>
+
+
+            <button id="addDeviceButton">
+
+                + เพิ่มอุปกรณ์
+
+            </button>
+
+        </div>
+
+
+        <!-- ============================== -->
+        <!-- Device Table -->
+        <!-- ============================== -->
+
+        <section class="device-section">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ลูกค้า
+                        </th>
+
+                        <th>
+                            ประเภท
+                        </th>
+
+                        <th>
+                            ยี่ห้อ
+                        </th>
+
+                        <th>
+                            รุ่น
+                        </th>
+
+                        <th>
+                            S/N
+                        </th>
+
+                        <th>
+                            Shop Tag
+                        </th>
+
+                        <th>
+                            จัดการ
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="deviceTableBody">
+
+                    <tr>
+
+                        <td colspan="7">
+                            กำลังโหลดข้อมูล...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- ============================== -->
+        <!-- Device Modal -->
+        <!-- ============================== -->
+
+        <div
+            id="deviceModal"
+            class="modal">
+
+            <div class="modal-content">
+
+                <h2 id="deviceModalTitle">
+                    เพิ่มอุปกรณ์
+                </h2>
+
+
+                <form id="deviceForm">
+
+
+                    <!-- Customer -->
+
+                    <label for="deviceCustomer">
+
+                        ลูกค้า
+
+                    </label>
+
+
+                    <select
+                        id="deviceCustomer"
+                        required>
+
+                        <option value="">
+
+                            -- เลือกลูกค้า --
+
+                        </option>
+
+                    </select>
+
+
+                    <!-- Device Type -->
+
+                    <label for="deviceType">
+
+                        ประเภทอุปกรณ์
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="deviceType"
+                        placeholder="เช่น Notebook, PC, Smartphone"
+                        required>
+
+
+                    <!-- Brand -->
+
+                    <label for="deviceBrand">
+
+                        ยี่ห้อ
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="deviceBrand"
+                        placeholder="เช่น ASUS">
+
+
+                    <!-- Model -->
+
+                    <label for="deviceModel">
+
+                        รุ่น
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="deviceModel"
+                        placeholder="เช่น TUF Gaming F15">
+
+
+                    <!-- Serial Number -->
+
+                    <label for="deviceSerial">
+
+                        Serial Number (S/N)
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="deviceSerial"
+                        placeholder="เช่น ABC123456">
+
+
+                    <!-- Shop Tag -->
+
+                    <label for="deviceShopTag">
+
+                        Shop Tag
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="deviceShopTag"
+                        placeholder="เช่น TAG-001">
+
+
+                    <!-- Note -->
+
+                    <label for="deviceNote">
+
+                        หมายเหตุ
+
+                    </label>
+
+
+                    <textarea
+                        id="deviceNote"
+                        rows="4"
+                        placeholder="รายละเอียดเพิ่มเติม"></textarea>
+
+
+                    <!-- Message -->
+
+                    <p id="deviceFormMessage"></p>
+
+
+                    <!-- Buttons -->
+
+                    <div class="modal-buttons">
+
+                        <button
+                            type="button"
+                            id="cancelDeviceButton">
+
+                            ยกเลิก
+
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            id="saveDeviceButton">
+
+                            บันทึกอุปกรณ์
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ============================== -->
+    <!-- Supabase -->
+    <!-- ============================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase.js"></script>
+
+    <script src="js/stock.js"></script>
+
+</body>
+
+</html>

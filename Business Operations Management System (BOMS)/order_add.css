@@ -1,0 +1,35 @@
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%;font-family:"MS Sans Serif",Tahoma,Arial,sans-serif;font-size:13px;color:#000;background:#008080}
+body{padding:10px}
+button,input,select,textarea{font:13px "MS Sans Serif",Tahoma,Arial,sans-serif;color:#000}
+button{background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;border-radius:0;padding:4px 12px;min-height:26px;box-shadow:1px 1px 0 #000;cursor:pointer}
+button:active{border-color:#404040 #fff #fff #404040;box-shadow:none;transform:translate(1px,1px)}
+button:focus,input:focus,select:focus,textarea:focus{outline:1px dotted #000;outline-offset:-3px}
+button:disabled{color:#808080;text-shadow:1px 1px #fff;cursor:default}
+.topbar{background:#c0c0c0;border:2px solid;border-color:#fff #000 #000 #fff;box-shadow:1px 1px 0 #000;min-height:42px;padding:3px 4px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.topbar>div:first-child{display:flex;align-items:center;gap:8px;min-width:0}
+.topbar h1{margin:0;background:#000080;color:#fff;font-size:16px;font-weight:bold;padding:3px 8px;line-height:20px}
+.topbar p{margin:0;font-weight:bold;white-space:nowrap}
+.user-area{display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+#userRole{font-weight:bold;margin-right:3px}
+.container{max-width:980px;margin:12px auto;background:#c0c0c0;border:2px solid;border-color:#fff #000 #000 #fff;box-shadow:2px 2px 0 #000;padding:3px}
+.page-header{padding:8px 10px;border:2px solid;border-color:#404040 #fff #fff #404040;background:#c0c0c0;margin-bottom:8px}
+.page-header h2{margin:0 0 4px;font-size:18px}
+.page-header p{margin:0}
+.order-section{border:2px solid;border-color:#404040 #fff #fff #404040;padding:3px;background:#c0c0c0}
+.modal-content{background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;padding:3px}
+form{max-width:760px;margin:0 auto}
+label{display:block;font-weight:bold;margin:9px 0 3px}
+input,select,textarea{width:100%;background:#fff;border:2px solid;border-color:#404040 #fff #fff #404040;border-radius:0;padding:5px 6px;min-height:28px;box-shadow:inset 1px 1px 0 #808080}
+select{padding-right:24px}
+textarea{resize:vertical;min-height:105px}
+#orderFormMessage{min-height:20px;margin:8px 0;color:#800000;font-weight:bold}
+.modal-buttons{display:flex;justify-content:flex-end;gap:7px;border-top:1px solid #808080;margin-top:10px;padding-top:9px}
+#saveOrderButton{font-weight:bold;min-width:120px}
+#cancelOrderButton{min-width:85px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.25);align-items:center;justify-content:center;padding:12px;z-index:1000}
+.modal[style*="display: block"],.modal[style*="display:block"]{display:flex!important}
+.modal .modal-content{width:min(760px,100%);max-height:90vh;overflow:auto;box-shadow:3px 3px 0 #000}
+.modal h3{margin:0 0 8px;background:#000080;color:#fff;padding:3px 6px;font-size:14px}
+#orderDetailContent{background:#fff;border:2px solid;border-color:#404040 #fff #fff #404040;padding:8px;min-height:80px;white-space:normal}
+@media(max-width:700px){body{padding:5px}.topbar{align-items:flex-start;flex-direction:column}.user-area{width:100%;justify-content:flex-start}.container{margin:7px 0}.page-header h2{font-size:16px}.modal-buttons{flex-direction:column-reverse}.modal-buttons button{width:100%}}

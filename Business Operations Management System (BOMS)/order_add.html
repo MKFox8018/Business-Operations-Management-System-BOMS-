@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BOMS - เพิ่ม Order</title>
+
+    <link rel="stylesheet" href="order_add.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="topbar">
+
+        <div>
+            <h1>BOMS</h1>
+            <p>เพิ่ม Order</p>
+        </div>
+
+        <div class="user-area">
+
+            <span id="userRole">
+                กำลังโหลด...
+            </span>
+
+            <button id="backButton">
+                กลับหน้าหลัก
+            </button>
+
+            <button id="logoutButton">
+                ออกจากระบบ
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <div class="page-header">
+
+            <div>
+                <h2>เพิ่ม Order</h2>
+
+                <p>
+                    รับงานซ่อมและสร้างรายการ Order ใหม่
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Add Order Form -->
+        <section class="order-section">
+
+            <div class="modal-content">
+
+                <form id="orderForm">
+
+
+                    <!-- Customer -->
+
+                    <label for="customerSelect">
+                        ลูกค้า
+                    </label>
+
+                    <select id="customerSelect" required>
+
+                        <option value="">
+                            -- เลือกลูกค้า --
+                        </option>
+
+                    </select>
+
+
+                    <!-- Device -->
+
+                    <label for="deviceSelect">
+                        อุปกรณ์
+                    </label>
+
+                    <select id="deviceSelect" required>
+
+                        <option value="">
+                            -- เลือกอุปกรณ์ --
+                        </option>
+
+                    </select>
+
+
+                    <!-- Order Code -->
+
+                    <label for="orderCode">
+                        รหัสงาน
+                    </label>
+
+                    <input
+                        type="text"
+                        id="orderCode"
+                        placeholder="เช่น ORD-2026-001"
+                        required
+                    >
+
+
+                    <!-- Main Problem -->
+
+                    <label for="mainProblem">
+                        ปัญหาหลัก
+                    </label>
+
+                    <input
+                        type="text"
+                        id="mainProblem"
+                        placeholder="เช่น เปิดเครื่องไม่ติด"
+                        required
+                    >
+
+
+                    <!-- Description -->
+
+                    <label for="description">
+                        รายละเอียดเพิ่มเติม
+                    </label>
+
+                    <textarea
+                        id="description"
+                        rows="5"
+                        placeholder="รายละเอียดอาการเสียเพิ่มเติม"
+                    ></textarea>
+
+
+                    <!-- Repair Cost -->
+
+                    <label for="repairCost">
+                        ค่าซ่อม
+                    </label>
+
+                    <input
+                        type="number"
+                        id="repairCost"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                    >
+
+
+                    <!-- Message -->
+
+                    <p id="orderFormMessage"></p>
+
+
+                    <!-- Buttons -->
+
+                    <div class="modal-buttons">
+
+                        <button
+                            type="button"
+                            id="cancelOrderButton">
+
+                            ยกเลิก
+
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            id="saveOrderButton">
+
+                            บันทึก Order
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Supabase -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase.js"></script>
+
+    <script src="js/order_add.js"></script>
+
+</body>
+
+</html>

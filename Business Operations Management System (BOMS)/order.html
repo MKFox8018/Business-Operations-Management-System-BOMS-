@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BOMS - รายการซ่อม</title>
+
+    <link rel="stylesheet" href="order.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="topbar">
+
+        <div>
+            <h1>BOMS</h1>
+            <p>รายการซ่อม</p>
+        </div>
+
+        <div class="user-area">
+            <span id="userRole">กำลังโหลด...</span>
+
+            <button id="backButton">
+                กลับหน้าหลัก
+            </button>
+
+            <button id="logoutButton">
+                ออกจากระบบ
+            </button>
+        </div>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <div class="page-header">
+
+            <div>
+                <h2>รายการซ่อม</h2>
+                <p>จัดการงานซ่อมของลูกค้า</p>
+            </div>
+
+            <button id="addOrderButton">
+                + รับงานซ่อม
+            </button>
+
+        </div>
+
+
+        <!-- Order List -->
+        <section class="order-section">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>รหัสงาน</th>
+                        <th>ลูกค้า</th>
+                        <th>อุปกรณ์</th>
+                        <th>ปัญหา</th>
+                        <th>ค่าซ่อม</th>
+                        <th>สถานะ</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+
+                <tbody id="orderTableBody">
+
+                    <tr>
+                        <td colspan="7">
+                            กำลังโหลดข้อมูล...
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+<!-- Add Order Modal -->
+<div id="orderModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>รับงานซ่อม</h2>
+
+        <form id="orderForm">
+
+            <!-- Customer -->
+            <label for="customerSelect">
+                ลูกค้า
+            </label>
+
+            <select id="customerSelect" required>
+                <option value="">
+                    -- เลือกลูกค้า --
+                </option>
+            </select>
+
+
+            <!-- Device -->
+            <label for="deviceSelect">
+                อุปกรณ์
+            </label>
+
+            <select id="deviceSelect" required>
+                <option value="">
+                    -- เลือกอุปกรณ์ --
+                </option>
+            </select>
+
+
+            <!-- Order Code -->
+            <label for="orderCode">
+                รหัสงาน
+            </label>
+
+            <input
+                type="text"
+                id="orderCode"
+                placeholder="เช่น ORD-2026-001"
+                required
+            >
+
+
+            <!-- Main Problem -->
+            <label for="mainProblem">
+                ปัญหาหลัก
+            </label>
+
+            <input
+                type="text"
+                id="mainProblem"
+                placeholder="เช่น เปิดเครื่องไม่ติด"
+                required
+            >
+
+
+            <!-- Description -->
+            <label for="description">
+                รายละเอียดเพิ่มเติม
+            </label>
+
+            <textarea
+                id="description"
+                rows="4"
+                placeholder="รายละเอียดอาการเสียเพิ่มเติม"
+            ></textarea>
+
+
+            <!-- Repair Cost -->
+            <label for="repairCost">
+                ค่าซ่อม
+            </label>
+
+            <input
+                type="number"
+                id="repairCost"
+                min="0"
+                step="0.01"
+                value="0"
+            >
+
+
+            <p id="orderFormMessage"></p>
+
+
+            <div class="modal-buttons">
+
+                <button
+                    type="button"
+                    id="cancelOrderButton">
+                    ยกเลิก
+                </button>
+
+                <button
+                    type="submit"
+                    id="saveOrderButton">
+                    บันทึกงาน
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+</div>
+
+
+<!-- Order Detail Modal -->
+<div id="orderDetailModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>รายละเอียดงานซ่อม</h2>
+
+        <div id="orderDetailContent">
+            กำลังโหลดข้อมูล...
+        </div>
+
+        <div class="modal-buttons">
+
+            <button
+                type="button"
+                id="closeOrderDetailButton">
+                ปิด
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</main>
+
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/order.js"></script>
+
+</body>
+
+</html>

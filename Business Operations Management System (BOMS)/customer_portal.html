@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOMS - Customer Portal</title>
+
+    <link rel="stylesheet" href="customer_portal.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div>
+        <h1>BOMS</h1>
+        <p>Customer Portal</p>
+    </div>
+
+    <div class="user-area">
+
+        <span id="customerNameText">
+            กำลังโหลด...
+        </span>
+
+        <button id="logoutButton">
+            ออกจากระบบ
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="welcome-box">
+
+        <h2>
+            👋 ยินดีต้อนรับ
+        </h2>
+
+        <p id="welcomeText">
+            กำลังโหลดข้อมูลลูกค้า...
+        </p>
+
+    </div>
+
+
+    <div class="page-header">
+
+        <div>
+            <h2>📋 งานซ่อมของฉัน</h2>
+            <p>สามารถติดตามสถานะงานซ่อมได้ที่นี่</p>
+        </div>
+
+    </div>
+
+
+    <section class="order-section">
+
+        <div id="orderList" class="order-grid">
+
+            <p>กำลังโหลดข้อมูล...</p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     Order Detail Modal
+========================= -->
+
+<div id="detailModal" class="modal">
+
+    <div class="modal-content large-modal">
+
+        <div class="modal-header">
+
+            <h2>รายละเอียดงานซ่อม</h2>
+
+            <button id="closeDetailButton" class="close-button">
+                ×
+            </button>
+
+        </div>
+
+        <div id="detailContent">
+
+            กำลังโหลด...
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/customer_portal.js"></script>
+
+</body>
+</html>

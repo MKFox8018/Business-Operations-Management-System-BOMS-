@@ -1,0 +1,224 @@
+/* =========================================================
+   BOMS - Windows 98 Login UI
+   UI only: login logic remains in js/auth.js
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #008080;
+    color: #000;
+    font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* Windows 98 desktop-style area */
+.login-container {
+    width: 100%;
+    min-height: calc(100vh - 36px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.login-container::before {
+    content: "BOMS - Business Operations Management System";
+    position: fixed;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    height: 24px;
+    padding: 4px 8px;
+    background: #c0c0c0;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    box-shadow: 1px 1px 0 #000;
+    font-weight: bold;
+    color: #000;
+    pointer-events: none;
+}
+
+.login-box {
+    width: min(430px, 100%);
+    background: #c0c0c0;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    box-shadow: 2px 2px 0 #404040;
+    padding: 3px;
+}
+
+/* Fake classic window title bar */
+.login-box h1 {
+    margin: 0;
+    padding: 5px 8px;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    background: #000080;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.login-box h1::before {
+    content: "▣";
+    margin-right: 7px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.login-box .subtitle {
+    margin: 0;
+    padding: 18px 18px 8px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#loginForm {
+    margin: 0;
+    padding: 10px 18px 18px;
+}
+
+.input-group {
+    margin-bottom: 14px;
+}
+
+.input-group label {
+    display: block;
+    margin: 0 0 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    height: 28px;
+    padding: 4px 6px;
+    background: #fff;
+    color: #000;
+    border: 2px solid;
+    border-top-color: #808080;
+    border-left-color: #808080;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    outline: none;
+    border-radius: 0;
+    font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+    font-size: 13px;
+}
+
+.input-group input:focus {
+    outline: 1px dotted #000;
+    outline-offset: -3px;
+}
+
+.input-group input::placeholder {
+    color: #555;
+}
+
+#loginButton {
+    min-width: 120px;
+    height: 30px;
+    margin-top: 4px;
+    padding: 3px 14px;
+    background: #c0c0c0;
+    color: #000;
+    border: 2px solid;
+    border-top-color: #fff;
+    border-left-color: #fff;
+    border-right-color: #000;
+    border-bottom-color: #000;
+    border-radius: 0;
+    box-shadow: 1px 1px 0 #808080;
+    font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#loginButton:hover {
+    background: #d4d4d4;
+}
+
+#loginButton:active {
+    border-top-color: #000;
+    border-left-color: #000;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    box-shadow: none;
+    padding-top: 5px;
+    padding-left: 16px;
+}
+
+#loginButton:focus-visible {
+    outline: 1px dotted #000;
+    outline-offset: -5px;
+}
+
+#loginMessage {
+    min-height: 18px;
+    margin: 12px 0 0;
+    padding: 3px 5px;
+    color: #000080;
+    font-weight: bold;
+}
+
+/* Small-screen support while keeping the Win98 look */
+@media (max-width: 520px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+    }
+
+    .login-container {
+        min-height: calc(100vh - 20px);
+        padding: 30px 0 34px;
+        align-items: flex-start;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 430px;
+    }
+
+    .login-box .subtitle {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    #loginForm {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .login-container::before {
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        font-size: 11px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}

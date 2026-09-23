@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOMS - Main Menu</title>
+    <link rel="stylesheet" href="main_menu.css">
+</head>
+<body>
+
+    <div class="desktop">
+
+        <div class="window">
+            <div class="titlebar">
+                <div class="titlebar-left">
+                    <span class="app-icon">▣</span>
+                    <span>BOMS - Business Operations Management System</span>
+                </div>
+                <div class="window-buttons" aria-hidden="true">
+                    <span>_</span><span>□</span><span>×</span>
+                </div>
+            </div>
+
+            <div class="menubar">
+                <span><u>F</u>ile</span>
+                <span><u>V</u>iew</span>
+                <span><u>H</u>elp</span>
+            </div>
+
+            <div class="toolbar">
+                <div class="toolbar-item">📋 <span>ระบบ BOMS</span></div>
+                <div class="toolbar-spacer"></div>
+                <div class="toolbar-user">ผู้ใช้งาน: <strong id="userRole">กำลังโหลด...</strong></div>
+                <button id="logoutButton" class="toolbar-button" type="button">ออกจากระบบ</button>
+            </div>
+
+            <div class="window-body">
+                <div class="welcome-panel">
+                    <div class="welcome-icon">🖥️</div>
+                    <div>
+                        <div class="welcome-title">Business Operations Management System</div>
+                        <div class="welcome-subtitle">ระบบจัดการงานซ่อมและข้อมูลลูกค้า</div>
+                    </div>
+                </div>
+
+                <div class="section-title">เมนูหลัก</div>
+
+                <div class="menu-grid">
+                    <a href="order.html" class="menu-card">
+                        <div class="menu-icon">📋</div>
+                        <div class="menu-content">
+                            <h3>รายการ Order</h3>
+                            <p>ดูรายการงานซ่อมทั้งหมด และตรวจสอบสถานะงาน</p>
+                        </div>
+                    </a>
+
+                    <a href="order_add.html" class="menu-card">
+                        <div class="menu-icon">➕</div>
+                        <div class="menu-content">
+                            <h3>เพิ่ม Order</h3>
+                            <p>รับงานซ่อมและสร้าง Order ใหม่</p>
+                        </div>
+                    </a>
+
+                    <a href="order_manage.html" class="menu-card">
+                        <div class="menu-icon">🔧</div>
+                        <div class="menu-content">
+                            <h3>จัดการ Order</h3>
+                            <p>แก้ไขข้อมูล Order และจัดการสถานะงานซ่อม</p>
+                        </div>
+                    </a>
+
+                    <a href="customer.html" class="menu-card">
+                        <div class="menu-icon">👤</div>
+                        <div class="menu-content">
+                            <h3>ลูกค้า</h3>
+                            <p>เพิ่ม แก้ไข และค้นหาข้อมูลลูกค้า</p>
+                        </div>
+                    </a>
+
+                    
+                    <a href="stock.html" class="menu-card">
+                        <div class="menu-icon">💻</div>
+                        <div class="menu-content">
+                            <h3>อุปกรณ์</h3>
+                            <p>จัดการข้อมูลอุปกรณ์ของลูกค้า</p>
+                        </div>
+                    </a>
+
+                    <div class="menu-card disabled-card">
+                        <div class="menu-icon">📊</div>
+                        <div class="menu-content">
+                            <h3>สรุปยอด</h3>
+                            <p>ดูสรุปข้อมูลและยอดรวมการซ่อม</p>
+                            <span class="coming-soon">เร็ว ๆ นี้</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="statusbar">
+                <div class="status-cell status-main">พร้อมใช้งาน</div>
+                <div class="status-cell">BOMS</div>
+                <div class="status-cell status-role" id="statusRole">สิทธิ์: กำลังโหลด...</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/main_menu.js"></script>
+    <script>
+        const roleObserver = new MutationObserver(() => {
+            const role = document.getElementById("userRole").textContent;
+            document.getElementById("statusRole").textContent = role;
+        });
+        roleObserver.observe(document.getElementById("userRole"), { childList: true });
+    </script>
+</body>
+</html>

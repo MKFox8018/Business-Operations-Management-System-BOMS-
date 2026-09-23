@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BOMS - จัดการ Order</title>
+
+    <link rel="stylesheet" href="order_manage.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div>
+        <h1>BOMS</h1>
+        <p>Business Operations Management System</p>
+    </div>
+
+    <div class="user-area">
+
+        <span id="userRole">
+            กำลังโหลด...
+        </span>
+
+        <button id="logoutButton">
+            ออกจากระบบ
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <div>
+            <h2>🔧 จัดการ Order</h2>
+
+            <p>
+                แก้ไขข้อมูล Order และจัดการสถานะงานซ่อม
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- Search / Filter -->
+
+    <section class="filter-section">
+
+        <div class="filter-group">
+
+            <label for="searchInput">
+                ค้นหา
+            </label>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Order Code / ชื่อลูกค้า / ปัญหา"
+            >
+
+        </div>
+
+
+        <div class="filter-group">
+
+            <label for="statusFilter">
+                สถานะ
+            </label>
+
+            <select id="statusFilter">
+
+                <option value="">
+                    ทุกสถานะ
+                </option>
+
+                <option value="waiting">
+                    กำลังรอคิว
+                </option>
+
+                <option value="repairing">
+                    กำลังซ่อม
+                </option>
+
+                <option value="completed">
+                    ซ่อมเสร็จแล้วพร้อมส่ง
+                </option>
+
+                <option value="closed">
+                    ปิดงาน
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            id="refreshButton"
+            class="secondary-button"
+        >
+            🔄 รีเฟรช
+        </button>
+
+    </section>
+
+
+    <!-- Order Table -->
+
+    <section class="table-section">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Order Code</th>
+
+                    <th>ลูกค้า</th>
+
+                    <th>อุปกรณ์</th>
+
+                    <th>ปัญหา</th>
+
+                    <th>ค่าซ่อม</th>
+
+                    <th>สถานะ</th>
+
+                    <th>จัดการ</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="orderTableBody">
+
+                <tr>
+
+                    <td
+                        colspan="7"
+                        class="loading"
+                    >
+                        กำลังโหลดข้อมูล...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+
+    <div
+        id="message"
+        class="message"
+    ></div>
+
+
+    <button
+        id="backButton"
+        class="back-button"
+    >
+        ← กลับเมนูหลัก
+    </button>
+
+</main>
+
+
+
+<!-- =========================
+     Edit Order Modal
+========================= -->
+
+<div
+    id="editModal"
+    class="modal"
+>
+
+    <div class="modal-content large-modal">
+
+        <div class="modal-header">
+
+            <h2>
+                ✏️ แก้ไข Order
+            </h2>
+
+            <button
+                id="closeEditModalButton"
+                class="close-button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="editOrderForm">
+
+            <input
+                type="hidden"
+                id="editOrderId"
+            >
+
+
+            <label for="editOrderCode">
+                Order Code
+            </label>
+
+            <input
+                type="text"
+                id="editOrderCode"
+                required
+            >
+
+
+            <label for="editCustomer">
+                ลูกค้า
+            </label>
+
+            <select
+                id="editCustomer"
+                required
+            >
+
+                <option value="">
+                    กำลังโหลด...
+                </option>
+
+            </select>
+
+
+            <label for="editDevice">
+                อุปกรณ์
+            </label>
+
+            <select
+                id="editDevice"
+                required
+            >
+
+                <option value="">
+                    เลือกลูกค้าก่อน
+                </option>
+
+            </select>
+
+
+            <label for="editMainProblem">
+                สาเหตุหลัก
+            </label>
+
+            <input
+                type="text"
+                id="editMainProblem"
+                required
+            >
+
+
+            <label for="editDescription">
+                รายละเอียดเพิ่มเติม
+            </label>
+
+            <textarea
+                id="editDescription"
+                rows="5"
+            ></textarea>
+
+
+            <label for="editRepairCost">
+                ค่าซ่อม
+            </label>
+
+            <input
+                type="number"
+                id="editRepairCost"
+                min="0"
+                step="0.01"
+                required
+            >
+
+
+            <div
+                id="editMessage"
+                class="modal-message"
+            ></div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    id="cancelEditButton"
+                    class="secondary-button"
+                >
+                    ยกเลิก
+                </button>
+
+                <button
+                    type="submit"
+                    id="saveEditButton"
+                    class="primary-button"
+                >
+                    บันทึกการแก้ไข
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     Status Modal
+========================= -->
+
+<div
+    id="statusModal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+                🔄 เปลี่ยนสถานะ Order
+            </h2>
+
+            <button
+                id="closeStatusModalButton"
+                class="close-button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="status-order-info">
+
+            <p>
+                Order:
+                <strong id="statusOrderCode">
+                    -
+                </strong>
+            </p>
+
+            <p>
+                สถานะปัจจุบัน:
+                <strong id="currentStatus">
+                    -
+                </strong>
+            </p>
+
+        </div>
+
+
+        <label for="newStatus">
+            สถานะใหม่
+        </label>
+
+        <select id="newStatus">
+
+            <option value="waiting">
+                กำลังรอคิว
+            </option>
+
+            <option value="repairing">
+                กำลังซ่อม
+            </option>
+
+            <option value="completed">
+                ซ่อมเสร็จแล้วพร้อมส่ง
+            </option>
+
+            <option value="closed">
+                ปิดงาน
+            </option>
+
+        </select>
+
+
+        <label for="statusNote">
+            หมายเหตุ
+        </label>
+
+        <textarea
+            id="statusNote"
+            rows="4"
+            placeholder="หมายเหตุการเปลี่ยนสถานะ (ถ้ามี)"
+        ></textarea>
+
+
+        <div
+            id="statusMessage"
+            class="modal-message"
+        ></div>
+
+
+        <div class="form-buttons">
+
+            <button
+                type="button"
+                id="cancelStatusButton"
+                class="secondary-button"
+            >
+                ยกเลิก
+            </button>
+
+            <button
+                type="button"
+                id="saveStatusButton"
+                class="primary-button"
+            >
+                บันทึกสถานะ
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     History Modal
+========================= -->
+
+<div
+    id="historyModal"
+    class="modal"
+>
+
+    <div class="modal-content large-modal">
+
+        <div class="modal-header">
+
+            <h2>
+                📋 ประวัติสถานะ
+            </h2>
+
+            <button
+                id="closeHistoryModalButton"
+                class="close-button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="history-order-info">
+
+            <p>
+                Order:
+                <strong id="historyOrderCode">
+                    -
+                </strong>
+            </p>
+
+        </div>
+
+
+        <div class="history-table-wrapper">
+
+            <table class="history-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>จาก</th>
+
+                        <th>เป็น</th>
+
+                        <th>หมายเหตุ</th>
+
+                        <th>วันที่</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="historyTableBody">
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            class="loading"
+                        >
+                            กำลังโหลด...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/order_manage.js"></script>
+
+</body>
+</html>

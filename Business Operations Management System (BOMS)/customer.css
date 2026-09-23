@@ -1,0 +1,132 @@
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+    margin: 0;
+    font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    background: #008080;
+    color: #000;
+}
+
+button, input { font-family: inherit; font-size: 13px; }
+
+.topbar {
+    min-height: 54px;
+    padding: 5px 7px;
+    background: #c0c0c0;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.title-area { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.window-icon {
+    width: 32px; height: 30px; display: flex; align-items: center; justify-content: center;
+    background: #c0c0c0; border: 2px outset #fff; font-size: 18px;
+}
+.topbar h1 { margin: 0; font-size: 16px; font-weight: bold; white-space: nowrap; }
+.topbar p { margin: 2px 0 0; font-size: 11px; color: #333; }
+.user-area { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+#userRole { padding: 3px 6px; border: 2px inset #fff; background: #fff; white-space: nowrap; }
+
+.win98-button,
+.primary-button,
+.secondary-button,
+.back-button,
+.action-button,
+.close-button {
+    color: #000;
+    background: #c0c0c0;
+    border: 2px outset #fff;
+    border-radius: 0;
+    padding: 4px 10px;
+    cursor: pointer;
+    min-height: 25px;
+}
+
+.win98-button:active,
+.primary-button:active,
+.secondary-button:active,
+.back-button:active,
+.action-button:active,
+.close-button:active { border-style: inset; }
+
+.win98-button:focus,
+.primary-button:focus,
+.secondary-button:focus,
+.action-button:focus,
+#searchInput:focus,
+#customerForm input:focus { outline: 1px dotted #000; outline-offset: -4px; }
+
+.container {
+    width: min(1200px, calc(100% - 24px));
+    margin: 12px auto;
+}
+
+.page-header {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    background: #c0c0c0; padding: 7px;
+    border: 2px outset #fff; margin-bottom: 10px;
+}
+.page-header h2 { margin: 0; font-size: 16px; }
+.page-header p { margin: 3px 0 0; font-size: 11px; }
+.primary-button { font-weight: bold; }
+
+.search-section,
+.table-section,
+.modal-content {
+    background: #c0c0c0;
+    border: 2px outset #fff;
+}
+
+.search-section { padding: 8px; margin-bottom: 10px; }
+#searchInput {
+    width: 100%; padding: 6px 7px; background: #fff;
+    border: 2px inset #fff; border-radius: 0;
+}
+
+.table-section { overflow-x: auto; }
+table { width: 100%; min-width: 650px; border-collapse: separate; border-spacing: 0; background: #fff; }
+th, td { padding: 6px 8px; border-right: 1px solid #808080; border-bottom: 1px solid #808080; text-align: left; }
+th { background: #c0c0c0; font-weight: bold; border-top: 1px solid #fff; border-left: 1px solid #fff; white-space: nowrap; }
+tbody tr:nth-child(even) { background: #f2f2f2; }
+tbody tr:hover { background: #000080; color: #fff; }
+.loading, .empty { text-align: center; padding: 24px; color: #333; }
+tbody tr:hover .loading, tbody tr:hover .empty { color: #fff; }
+
+.action-button { padding: 3px 9px; margin-right: 4px; }
+.edit-button { font-weight: bold; }
+.message { margin-top: 8px; min-height: 18px; color: #800000; }
+
+.modal {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0, 0, 0, 0.35); align-items: center; justify-content: center;
+    padding: 12px;
+}
+.modal-content { width: min(500px, 100%); padding: 0; box-shadow: 4px 4px 0 #000; }
+.modal-header {
+    min-height: 28px; padding: 3px 4px 3px 7px; margin: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    color: #fff; background: #000080;
+}
+.modal-header h2 { margin: 0; font-size: 13px; }
+.close-button { min-width: 23px; width: 23px; height: 21px; padding: 0; font-weight: bold; line-height: 15px; }
+#customerForm { padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+#customerForm label { font-weight: bold; }
+#customerForm input { padding: 6px; background: #fff; border: 2px inset #fff; border-radius: 0; }
+.form-buttons { display: flex; justify-content: flex-end; gap: 7px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #808080; }
+
+@media (max-width: 700px) {
+    .topbar { align-items: flex-start; flex-direction: column; }
+    .user-area { width: 100%; justify-content: flex-start; }
+    .page-header { align-items: flex-start; flex-direction: column; }
+    .page-header .primary-button { width: 100%; }
+    .container { width: calc(100% - 10px); margin: 5px auto; }
+}

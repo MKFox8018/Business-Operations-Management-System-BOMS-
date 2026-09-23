@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOMS - Login</title>
+
+    <link rel="stylesheet" href="login.css">
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-box">
+
+            <h1>BOMS</h1>
+            <p class="subtitle">Business Operations Management System</p>
+
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="กรอก Email"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="กรอก Password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" id="loginButton">
+                    เข้าสู่ระบบ
+                </button>
+
+                <p id="loginMessage"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Supabase Configuration -->
+    <script src="js/supabase.js"></script>
+
+    <!-- Login Logic -->
+    <script src="js/auth.js"></script>
+
+</body>
+</html>
