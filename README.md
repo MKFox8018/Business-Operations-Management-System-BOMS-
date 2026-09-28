@@ -26,5 +26,6 @@ what manager can do ?
 - same like employee everything
 - but can delete order,customer,image
 - close order and order will be soft delete(until pass 7 day order will be delete)
+- will be add function for add and deleted "employee" later
 
 also every data is connected with supabase
