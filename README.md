@@ -8,7 +8,7 @@ until you enter in login.html you need to login with account so there's has 3 ro
 email: customer.test@boms.local
 password: testcustermer2
 what customer role can do ?
--login for watch your order status
+- login for watch your order status
 
 2.employee role
 email: test.employee@boms.local
