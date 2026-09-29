@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOMS - อุปกรณ์</title>
+    <link rel="stylesheet" href="stock.css">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <h1>BOMS</h1>
+            <p>จัดการอุปกรณ์</p>
+        </div>
+        <div class="user-area">
+            <span id="userRole">กำลังโหลด...</span>
+            <button id="backButton">กลับหน้าหลัก</button>
+            <button id="logoutButton">ออกจากระบบ</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <div>
+                <h2>รายการอุปกรณ์</h2>
+                <p>จัดการอุปกรณ์ของลูกค้า พร้อม Accessories และรูปภาพ</p>
+            </div>
+            <button id="addDeviceButton">+ เพิ่มอุปกรณ์</button>
+        </div>
+
+        <section class="device-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ลูกค้า</th>
+                        <th>ประเภท</th>
+                        <th>ยี่ห้อ</th>
+                        <th>รุ่น</th>
+                        <th>S/N</th>
+                        <th>Shop Tag</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody id="deviceTableBody">
+                    <tr><td colspan="7">กำลังโหลดข้อมูล...</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Device Modal -->
+        <div id="deviceModal" class="modal">
+            <div class="modal-content">
+                <h2 id="deviceModalTitle">เพิ่มอุปกรณ์</h2>
+                <form id="deviceForm">
+                    <label for="deviceCustomer">ลูกค้า</label>
+                    <select id="deviceCustomer" required>
+                        <option value="">-- เลือกลูกค้า --</option>
+                    </select>
+
+                    <label for="deviceType">ประเภทอุปกรณ์</label>
+                    <input type="text" id="deviceType" placeholder="เช่น Notebook, PC, Smartphone" required>
+
+                    <label for="deviceBrand">ยี่ห้อ</label>
+                    <input type="text" id="deviceBrand" placeholder="เช่น ASUS">
+
+                    <label for="deviceModel">รุ่น</label>
+                    <input type="text" id="deviceModel" placeholder="เช่น TUF Gaming F15">
+
+                    <label for="deviceSerial">Serial Number (S/N)</label>
+                    <input type="text" id="deviceSerial" placeholder="เช่น ABC123456">
+
+                    <label for="deviceShopTag">Shop Tag</label>
+                    <input type="text" id="deviceShopTag" placeholder="เช่น TAG-001">
+
+                    <label for="deviceNote">หมายเหตุ</label>
+                    <textarea id="deviceNote" rows="4" placeholder="รายละเอียดเพิ่มเติม"></textarea>
+
+                    <p id="deviceFormMessage"></p>
+
+                    <div class="modal-buttons">
+                        <button type="button" id="cancelDeviceButton">ยกเลิก</button>
+                        <button type="submit" id="saveDeviceButton">บันทึกอุปกรณ์</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Device Management Modal -->
+        <div id="manageModal" class="modal">
+            <div class="modal-content manage-content">
+                <div class="manage-header">
+                    <div>
+                        <h2 id="manageTitle">จัดการอุปกรณ์</h2>
+                        <p id="manageSubtitle"></p>
+                    </div>
+                    <button type="button" id="closeManageButton" class="secondary-button">ปิด</button>
+                </div>
+
+                <section class="manage-section">
+                    <div class="section-title-row">
+                        <h3>📦 Accessories</h3>
+                    </div>
+                    <form id="accessoryForm" class="inline-form">
+                        <input type="text" id="accessoryName" placeholder="เช่น ที่ชาร์จ, กระเป๋า, เมาส์" maxlength="255" required>
+                        <button type="submit" id="addAccessoryButton">+ เพิ่ม</button>
+                    </form>
+                    <p id="accessoryMessage" class="form-message"></p>
+                    <div id="accessoryList" class="item-list">
+                        <p class="empty-text">ยังไม่มี Accessories</p>
+                    </div>
+                </section>
+
+                <section class="manage-section">
+                    <div class="section-title-row">
+                        <h3>🖼️ รูปภาพอุปกรณ์</h3>
+                        <span class="hint">JPG / PNG / WebP ไม่เกิน 10 MB ต่อรูป</span>
+                    </div>
+                    <div id="imageUploadArea">
+                        <input type="file" id="deviceImageInput" accept="image/jpeg,image/png,image/webp" multiple>
+                        <button type="button" id="uploadImagesButton">⬆ อัปโหลดรูป</button>
+                    </div>
+                    <p id="imageMessage" class="form-message"></p>
+                    <div id="imageList" class="image-grid">
+                        <p class="empty-text">ยังไม่มีรูปภาพ</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/stock.js"></script>
+</body>
+</html>

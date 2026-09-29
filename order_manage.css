@@ -1,0 +1,392 @@
+/* =========================================================
+   BOMS - Order Manage
+   Windows 98 / Classic UI
+========================================================= */
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+    margin: 0;
+    font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    background: #008080;
+    color: #000;
+}
+
+button, input, select, textarea {
+    font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* Window title bar */
+.topbar {
+    margin: 10px 10px 0;
+    padding: 3px 4px;
+    min-height: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    background: #000080;
+    border: 2px solid;
+    border-color: #dfdfdf #000 #000 #dfdfdf;
+    box-shadow: inset 0 0 0 1px #808080;
+}
+
+.topbar h1 {
+    display: inline;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.topbar p {
+    display: inline;
+    margin: 0 0 0 8px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.user-area button,
+.primary-button,
+.secondary-button,
+.back-button,
+.action-button {
+    cursor: pointer;
+    color: #000;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #000 #000 #fff;
+    box-shadow: inset 1px 1px #dfdfdf, inset -1px -1px #808080;
+    border-radius: 0;
+}
+
+.user-area button:active,
+.primary-button:active,
+.secondary-button:active,
+.back-button:active,
+.action-button:active {
+    border-color: #000 #fff #fff #000;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf;
+}
+
+.user-area button { padding: 2px 9px; }
+
+/* Main application window */
+.container {
+    margin: 0 10px 10px;
+    padding: 8px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #000 #000 #fff;
+    box-shadow: inset 1px 1px #dfdfdf, inset -1px -1px #808080;
+}
+
+.page-header {
+    margin: 0 0 8px;
+    padding: 5px 7px;
+    border: 1px solid #808080;
+    background: #c0c0c0;
+}
+
+.page-header h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.page-header p {
+    margin: 3px 0 0;
+    color: #222;
+}
+
+/* Classic menu-like filter panel */
+.filter-section {
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 8px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 220px;
+}
+
+.filter-group label {
+    font-weight: bold;
+}
+
+.filter-group input,
+.filter-group select,
+#editOrderForm input,
+#editOrderForm select,
+#editOrderForm textarea,
+#newStatus,
+#statusNote {
+    width: 100%;
+    padding: 4px 5px;
+    color: #000;
+    background: #fff;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+    border-radius: 0;
+    outline: none;
+}
+
+.filter-group input:focus,
+.filter-group select:focus,
+#editOrderForm input:focus,
+#editOrderForm select:focus,
+#editOrderForm textarea:focus,
+#newStatus:focus,
+#statusNote:focus {
+    outline: 1px dotted #000;
+    outline-offset: -3px;
+}
+
+.primary-button,
+.secondary-button,
+.back-button {
+    padding: 4px 12px;
+    min-height: 27px;
+}
+
+.primary-button { font-weight: bold; }
+.primary-button:disabled { color: #808080; cursor: not-allowed; }
+
+.back-button { margin-top: 8px; }
+
+/* Table */
+.table-section {
+    overflow-x: auto;
+    background: #fff;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+}
+
+table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+th, td {
+    padding: 5px 6px;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    color: #fff;
+    background: #000080;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+td { max-width: 250px; }
+
+tbody tr:nth-child(even) { background: #f0f0f0; }
+tbody tr:hover { background: #000080; color: #fff; }
+
+/* Status */
+.status-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border: 1px solid #000;
+    border-radius: 0;
+    font-size: 12px;
+    white-space: nowrap;
+    background: #c0c0c0;
+    color: #000;
+}
+
+.status-waiting { background: #ffff00; color: #000; }
+.status-repairing { background: #00ffff; color: #000; }
+.status-completed { background: #00ff00; color: #000; }
+.status-closed { background: #c0c0c0; color: #000; }
+
+.action-button {
+    padding: 3px 8px;
+    margin: 1px;
+    font-size: 12px;
+}
+
+.edit-button { background: #c0c0c0; }
+.status-button { background: #c0c0c0; }
+.history-button { background: #c0c0c0; }
+.delete-button { background: #c0c0c0; }
+
+.loading, .empty {
+    padding: 25px;
+    text-align: center;
+    color: #000;
+}
+
+.message {
+    margin-top: 7px;
+    padding: 4px;
+    color: #800000;
+}
+
+/* Modals: classic dialog */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 500px;
+    padding: 4px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #000 #000 #fff;
+    box-shadow: inset 1px 1px #dfdfdf, inset -1px -1px #808080;
+}
+
+.large-modal { max-width: 750px; }
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 8px;
+    padding: 3px 5px;
+    color: #fff;
+    background: #000080;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 13px;
+}
+
+.close-button {
+    min-width: 20px;
+    height: 20px;
+    padding: 0;
+    line-height: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #000 #000 #fff;
+    border-radius: 0;
+}
+
+.close-button:active {
+    border-color: #000 #fff #fff #000;
+}
+
+#editOrderForm {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#editOrderForm label,
+.modal-content > label {
+    margin-top: 4px;
+    font-weight: bold;
+}
+
+#editOrderForm textarea,
+#statusNote { resize: vertical; }
+
+.status-order-info,
+.history-order-info {
+    margin-bottom: 8px;
+    padding: 7px;
+    background: #fff;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+}
+
+.status-order-info p,
+.history-order-info p { margin: 3px 0; }
+
+.history-table-wrapper { overflow-x: auto; }
+
+.history-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.history-table th,
+.history-table td {
+    padding: 4px 6px;
+    font-size: 12px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.modal-message {
+    margin-top: 5px;
+    color: #800000;
+    font-size: 12px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .topbar {
+        margin: 5px 5px 0;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .topbar p { display: block; margin: 2px 0 0; }
+
+    .user-area {
+        justify-content: space-between;
+        white-space: normal;
+    }
+
+    .container {
+        margin: 0 5px 5px;
+        padding: 6px;
+    }
+
+    .filter-section { align-items: stretch; }
+    .filter-group { min-width: 100%; }
+    .filter-section > button { width: 100%; }
+    .form-buttons { flex-direction: column; }
+    .form-buttons button { width: 100%; }
+}

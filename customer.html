@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOMS - ลูกค้า</title>
+    <link rel="stylesheet" href="customer.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="title-area">
+        <div class="window-icon">👤</div>
+        <div>
+            <h1>BOMS - ลูกค้า</h1>
+            <p>Business Operations Management System</p>
+        </div>
+    </div>
+
+    <div class="user-area">
+        <span id="userRole">กำลังโหลด...</span>
+        <button id="backButton" class="win98-button">กลับหน้าหลัก</button>
+        <button id="logoutButton" class="win98-button">ออกจากระบบ</button>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="page-header">
+        <div>
+            <h2>👤 ลูกค้า</h2>
+            <p>จัดการข้อมูลลูกค้า</p>
+        </div>
+
+        <button id="addCustomerButton" class="primary-button">
+            ➕ เพิ่มลูกค้า
+        </button>
+    </div>
+
+    <!-- Search -->
+    <section class="search-section">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 ค้นหาชื่อ หรือเบอร์โทร..."
+        >
+    </section>
+
+    <!-- Customer Table -->
+    <section class="table-section">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ชื่อ</th>
+                    <th>เบอร์โทร</th>
+                    <th>วันที่เพิ่ม</th>
+                    <th>จัดการ</th>
+                </tr>
+            </thead>
+
+            <tbody id="customerTableBody">
+                <tr>
+                    <td colspan="4" class="loading">
+                        กำลังโหลดข้อมูล...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+    <div id="message" class="message"></div>
+
+
+</main>
+
+
+<!-- Add / Edit Customer Modal -->
+<div id="customerModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2 id="modalTitle">➕ เพิ่มลูกค้า</h2>
+
+            <button id="closeModalButton" class="close-button">
+                ×
+            </button>
+        </div>
+
+        <form id="customerForm">
+
+            <input type="hidden" id="customerId">
+
+            <label for="customerName">
+                ชื่อลูกค้า
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="กรอกชื่อลูกค้า"
+                required
+            >
+
+            <label for="customerPhone">
+                เบอร์โทร
+            </label>
+
+            <input
+                type="text"
+                id="customerPhone"
+                placeholder="กรอกเบอร์โทร"
+                required
+            >
+
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    id="cancelButton"
+                    class="secondary-button"
+                >
+                    ยกเลิก
+                </button>
+
+                <button
+                    type="submit"
+                    id="saveButton"
+                    class="primary-button"
+                >
+                    บันทึก
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/customer.js"></script>
+
+</body>
+</html>
