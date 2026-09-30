@@ -2,6 +2,18 @@
 
 open file in vscode and open any file with "live server"
 
+login screen
+<img width="922" height="418" alt="image" src="https://github.com/user-attachments/assets/dc777e3a-5a1e-4a74-91c1-98df47ee30f7" />
+
+login as customer role
+<img width="913" height="416" alt="image" src="https://github.com/user-attachments/assets/74729fd4-6f80-4b8e-ade7-905e8d90f50e" />
+
+login as employee role
+<img width="911" height="417" alt="image" src="https://github.com/user-attachments/assets/5bbb0d3d-eae1-4fb1-a6e8-2431761c20a8" />
+
+login as manager role
+<img width="911" height="414" alt="image" src="https://github.com/user-attachments/assets/dd3448bb-3294-4205-ae7d-502519dd85f4" />
+
 until you enter in login.html you need to login with account so there's has 3 role
 
 1.customer role
@@ -17,7 +29,7 @@ what employee role can do ?
 - add customer order
 - add customer account 
 - update customer order status
-2.4 update cost to pay for service
+- update cost to pay for service
 
 3.manager role
 email: manager-test@boms.local
