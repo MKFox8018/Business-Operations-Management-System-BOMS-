@@ -1,41 +1,55 @@
 # Business-Operations-Management-System-BOMS-
 
-open file in vscode and open any file with "live server"
-
-login screen
+### Login Screen
 <img width="922" height="418" alt="image" src="https://github.com/user-attachments/assets/dc777e3a-5a1e-4a74-91c1-98df47ee30f7" />
 
-login as customer role
+### Customer Role
 <img width="913" height="416" alt="image" src="https://github.com/user-attachments/assets/74729fd4-6f80-4b8e-ade7-905e8d90f50e" />
 
-login as employee role
+### Employee Role
 <img width="911" height="417" alt="image" src="https://github.com/user-attachments/assets/5bbb0d3d-eae1-4fb1-a6e8-2431761c20a8" />
 
-login as manager role
+### Manager Role
 <img width="911" height="414" alt="image" src="https://github.com/user-attachments/assets/dd3448bb-3294-4205-ae7d-502519dd85f4" />
 
-until you enter in login.html you need to login with account so there's has 3 role
+## How to Run
 
-1.customer role
-email: customer.test@boms.local
-password: testcustermer2
-what customer role can do ?
-- login for watch your order status
+Open the project in VS Code and run `login.html` using Live Server.
 
-2.employee role
-email: test.employee@boms.local
-password: TestEmployee123!
-what employee role can do ?
-- add customer order
-- add customer account 
-- update customer order status
-- update cost to pay for service
+## User Roles
 
-3.manager role
-what manager role can do ?
-- same like employee everything
-- but can delete order,customer,image
-- close order and order will be soft delete(until pass 7 day order will be delete)
-- will be add function for add and deleted "employee" later
+### 1. Customer
+- Login and view their own order status
 
-also every data is connected with my supabase
+### 2. Employee
+- Create customer orders
+- Create customer accounts
+- Update order status
+- Update repair cost
+
+### 3. Manager
+- All Employee permissions
+- Delete orders, customers, and images
+- Close orders
+- Manage soft-deleted orders
+  
+The application uses Supabase for authentication and database management.
+
+## Tech Stack
+
+- HTML5
+- CSS3
+- JavaScript
+- Supabase
+- PostgreSQL
+
+## Features
+
+- Customer Portal
+- Customer / Employee / Manager roles
+- Role-based access control
+- Repair order management
+- Order status tracking
+- Order status history
+- Soft Delete
+- Supabase / PostgreSQL database
